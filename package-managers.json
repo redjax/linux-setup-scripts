@@ -1,0 +1,60 @@
+{
+    "distributions": [
+        {
+            "distro": "fedora",
+            "packageMgr": "dnf",
+            "dnfcommands": [
+                {
+                    "install": "install",
+                    "no-confirm": "-y",
+                    "uninstall": "remove",
+                    "update": "upgrade",
+                    "dist-upgrade": "",
+                    "package-search": "search"
+                }
+            ]
+        },
+        {
+            "distro": "ubuntu",
+            "packageMgr": "apt",
+            "aptcommands":[
+                {
+                    "install": "install",
+                    "no-confirm": "-y",
+                    "uninstall": "remove",
+                    "update": "update",
+                    "upgrade": "upgrade",
+                    "dist-upgrade": "",
+                    "package-search": "search"
+                }
+            ]
+        },
+        {
+            "distro": "arch",
+            "packageMgr": "pacman",
+            "pacmancommands":[
+                {
+                    "install": "-S",
+                    "no-confirm": "--noconfirm",
+                    "uninstall": "-R",
+                    "check-dependencies": "pactree",
+                    "update": "-Syu",
+                    "dist-upgrade": "",
+                    "package-search": "-Ss"
+                }
+            ],
+            "aurMgr": "",
+            "aurMgrcommands": [
+                {
+                    "install": "-S",
+                    "no-confirm": "--noconfirm",
+                    "uninstall": "-R",
+                    "check-dependencies": "pactree",
+                    "update": "-Syu",
+                    "dist-upgrade": "",
+                    "package-search": "-Ss"
+                }
+            ]
+        }
+    ]
+}
