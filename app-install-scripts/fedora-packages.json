@@ -1,0 +1,36 @@
+{
+    "screen": {
+        "package-name": "screen",
+        "additional-confs": ""
+    },
+    "tlp": {
+        "package-name": "tlp",
+        "additional-confs": ""
+    },
+    "brave-browser-dev": {
+        "package-name": "brave-browser-dev",
+        "setup-script": "app-install-scripts/fedora/brave-browser-dev-install.sh",
+        "repo-url": "https://brave-browser-rpm-dev.s3.brave.com/x86_64/",
+        "key-import": "rpm --import https://brave-browser-rpm-dev.s3.brave.com/brave-core-nightly.asc"
+    },
+    "nvim": {
+        "package-name": "nvim",
+        "additional-confs": {
+            "conf-dir": "app-install-scripts/app-confs/any-distro/nvim",
+            "target-dir": ".config/"
+        }
+    },
+    "git": {
+        "package-name": "git"
+    },
+    "albert-launcher": {
+        "package-name": "albert",
+        "repo-import": "rpm --import https://build.opensuse.org/projects/home:manuelschneid3r/public_key"
+    },
+    "alacarte": {
+        "package-name": "alacarte"
+    },
+    "android-tools": {
+        "package-name": "android-tools"
+    }
+}
