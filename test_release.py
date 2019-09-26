@@ -1,44 +1,10 @@
 import subprocess
 
+import sysops
+
 # Shell command to get release information
 release_cmd = ['lsb_release', '-a']
 test_cmd = ['ls', '-a', '/home/jack/']
-
-
-def write_to_file(file, data, optype='w+'):
-    """Write data to a file. Default optype is w+"""
-    # Open file as optype (i.e. r, w, w+, etc)
-    outfile = open(file, optype)
-    # Write passed data to the file
-    outfile.write(data)
-    # Close file
-    outfile.close()
-
-
-def test_runcmd(cmd, outfile):
-    """Test function for running shell commands."""
-    # Build shell command
-    process = subprocess.Popen(cmd,
-                               stdout=subprocess.PIPE,
-                               shell=False)
-
-    # Get output of command in variable
-    output = process.stdout.read().decode()
-
-    write_to_file('this_pc/testout.txt', 'w+', output)
-
-
-def find_distro_info(file, search_term):
-    """Find related information from text file.
-    TODO: Break out each search item into new function
-    for easier development/variable creation."""
-    # Open file passed as arg for reading
-    searchfile = open(file, 'r')
-    # Loop through file to find search_term
-    for line in searchfile:
-        if search_term in line:
-            return line
-    searchfile.close()
 
 
 def build_pc_info_file(file, data):
@@ -64,11 +30,13 @@ def test_releaseinfo():
                          '\t']
 
     # Create distributor object
-    distributor = find_distro_info('this_pc/testout.txt', 'Distributor ID:')
+    distributor = sysops.find_line_in_file('this_pc/testout.txt',
+                                           'Distributor ID:')
     # Create release object
-    release = find_distro_info('this_pc/testout.txt', 'Release:')
+    release = sysops.find_line_in_file('this_pc/testout.txt', 'Release:')
     # Create codename object
-    codename = find_distro_info('this_pc/testout.txt', 'Codename:')
+    codename = sysops.find_line_in_file('this_pc/testout.txt', 'Codename:')
+
     # Next 3 lines create objects to be stripped of remove_words_list items
     distributor_cleaned = distributor.split()
     release_cleaned = release.split()
@@ -89,7 +57,7 @@ def test_commands():
     """Function to run each command as a test."""
     release_cmd = ['lsb_release', '-a']
 
-    test_runcmd(release_cmd, 'this_pc/testout.txt')
+    sysops.run_cmd(release_cmd, 'this_pc/testout.txt')
     print(test_releaseinfo())
 
 
@@ -119,8 +87,11 @@ def test_better_release():
 
     # Get output of command in variable
     output = process.stdout.read().decode()
-    return output
+    distro, release = output.split(' ')
+    # return output
+    print("Distribution: {}\nRelease: {}".format(distro, release))
 
 
-# test_commands()
-print(test_better_release())
+release_cmd = ['lsb_release', '-a']
+# print(sysops.run_cmd(release_cmd))
+print(sysops.find_line_in_file('this_pc/testout.txt', "Distributor ID:"))
