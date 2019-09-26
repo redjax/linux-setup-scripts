@@ -44,12 +44,6 @@ def build_pc_info_file(file, data):
     outfile.close()
 
 
-# Find the Distributor ID, i.e. Ubuntu
-# find_distro_info(outfile_name, 'Distributor ID:')
-# Find the release version, i.e. 19.04
-# find_distro_info(outfile_name, 'Release:')
-# Find codename, i.e. disco
-
 def test_releaseinfo():
     """Get text from release info file, strip down to essential info."""
     # List of words to scan string for, then remove
