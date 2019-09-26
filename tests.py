@@ -1,4 +1,4 @@
-import unittest
+# import unittest
 
 from setupScriptClasses import LinuxDistro as LinuxDistro
 from setupScriptClasses import PackageMgr as PackageMgr
