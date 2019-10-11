@@ -2,3 +2,6 @@ lsb_release command does not work on every distro. Distro-specific notes below:
 
 * Fedora: lsb_release is an additional install. Instead, you can cat /etc/os-release, which gives a very detailed output. Building a Python function to parse this output will be necessary.
 * Ubuntu: lsb_release -a and the command currently in use in the script work great, but will need to be either reworked to only running on Ubuntu (figure out how to test if environment is Ubuntu), or go with a more generic function, such as cat /etc/os-release like Fedora.
+
+**A possible generic method for getting release is the hostnamectl command.
+**Another possible generic method is cat /etc/*-release
